@@ -1,1 +1,52 @@
-<p>progress works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Barra de progreso</h4>
+                <!-- ============================================================== -->
+                <!-- End Container progress  -->
+                <!-- ============================================================== -->
+                <div class="progress mb-3">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        [attr.ariaValuenow]="progreso1" [style.width]="progreso1 + '%'" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+                        [attr.ariaValuenow]="progreso2" [style.width]="progreso2 + '%'" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Page progress -->
+                <!-- ============================================================== -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+
+                <app-incrementador (cambioValor)="progreso1 = $event" [porcentaje]="progreso1"
+                    nombre="Barra de Progreso Azul">
+                </app-incrementador>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+
+                <app-incrementador (cambioValor)="progreso2 = $event" [porcentaje]="progreso2"
+                    nombre="Barra de Progreso Verde">
+                </app-incrementador>
+
+            </div>
+        </div>
+    </div>
+</div>
