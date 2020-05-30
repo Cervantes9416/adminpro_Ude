@@ -13,6 +13,7 @@ import { RegisterComponent } from './login/register.component';
 import { PagesModule } from './pages/pages.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceModule } from './services/service.module';
+import { PipesModule } from './pipes/pipes.module';
 
 //Servicios
 
@@ -29,6 +30,7 @@ import { ServiceModule } from './services/service.module';
     FormsModule,
     ReactiveFormsModule,
     ServiceModule,
+    PipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

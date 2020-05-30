@@ -19,6 +19,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations:[
@@ -30,7 +33,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         GraficoDonaComponent,
         AccountSettingsComponent,
         PromesasComponent,
-        RxjsComponent
+        RxjsComponent,
+        ProfileComponent,
     ],
     exports:[
         DashboardComponent,
@@ -39,11 +43,13 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         PagesComponent
     ],
     imports:[
+        CommonModule,
         SharedModule,
         PAGES_ROUTES,
         FormsModule,
         ChartsModule,
-        BrowserModule
+        BrowserModule,
+        PipesModule
     ]
 })
 export class PagesModule{}

@@ -10,3 +10,7 @@
 .pointer:hover{
     color: red;
 }
+
+.w150{
+    width:150px;
+}

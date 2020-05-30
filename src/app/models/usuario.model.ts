@@ -1,12 +1,12 @@
 export class Usuario {
     constructor(
-        public nombre:String,
-        public email:String,
-        public password:String,
-        public img?:String,
-        public role?:String,
-        public google?:String,
-        public _id?:String,
+        public nombre:string,
+        public email:string,
+        public password:string,
+        public img?:string,
+        public role?:string,
+        public google?:string,
+        public _id?:string,
     ){
 
     }

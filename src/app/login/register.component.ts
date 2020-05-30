@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import * as _swal from 'sweetalert';
-import { SweetAlert } from 'sweetalert/typings/core';
-const swal: SweetAlert = _swal as any;
+// import * as _swal from 'sweetalert';
+// import { SweetAlert } from 'sweetalert/typings/core';
+// const swal: SweetAlert = _swal as any;
+
+import Swal from 'sweetalert2';
 
 import { UsuarioService } from '../services/services.index';
 import { Usuario } from 'src/app/models/usuario.model';
@@ -18,7 +20,7 @@ declare function init_plugins();
 })
 export class RegisterComponent implements OnInit {
 
-  forma:FormGroup;
+  forma:any;
 
   constructor(
     private _usuarioService:UsuarioService,
@@ -64,7 +66,9 @@ export class RegisterComponent implements OnInit {
     }
 
     if(!this.forma.value.condiciones){
-      swal("Importante!", "Debe de aceptar las condiciones", "warning");
+      //swal("Importante!", "Debe de aceptar las condiciones", "warning");
+      Swal.fire("Importante!", "Debe de aceptar las condiciones", "warning");
+      return;
     }
 
     let usuario = new Usuario(
