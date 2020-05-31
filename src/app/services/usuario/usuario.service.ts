@@ -124,8 +124,12 @@ export class UsuarioService {
     return this.http.put(URL,usuario,{headers:headersData})
     .pipe(
       map((resp:any)=> {
+        if(usuario._id === this.usuario._id){
+          let usuarioDB:Usuario = resp.usuario;
+          this.guardarStorage(usuarioDB._id,this.token,usuarioDB)
+        }
+
         Swal.fire('Usuario actualziado',usuario.nombre.toString(),'success')
-        this.guardarStorage(resp.usuario._id,this.token,resp.usuario)
         return true;
       })
     )
@@ -156,5 +160,51 @@ export class UsuarioService {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  // ====================================================
+  // OBTENER TODOS LOS USUARIOS
+  // ====================================================
+  cargarUsuarios(desde:number = 0){
+    let URL = `${URL_SERVICIOS}/usuario?desde=${desde}`;
+
+    return this.http.get(URL);
+  }
+
+  // ====================================================
+  // BUSCAR USUARIO
+  // ====================================================
+  buscarUsuarios(termino:string){
+    let URL = `${URL_SERVICIOS}/busqueda/coleccion/usuario/${termino}`;
+
+    return this.http.get(URL)
+      .pipe(
+        map((resp:any) => {
+          return resp.respuesta
+        })
+      )
+  }
+
+  // ====================================================
+  // BORRAR UN USUARIO
+  // ====================================================
+  borrarUsuario(_id:string){
+    let URL = `${URL_SERVICIOS}/usuario/${_id}`;
+
+    const headersData = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'token': this.token,
+    });
+
+    return this.http.delete(URL, {headers:headersData})
+      .pipe(
+        map((resp:any) => {
+          Swal.fire(
+            'Eliminado!',
+            `El usuario ${resp.usuario.nombre} ha sido eliminado`,
+            'success'
+          );
+        })
+      );
   }
 }
