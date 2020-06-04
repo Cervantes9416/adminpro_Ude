@@ -129,7 +129,7 @@ export class UsuarioService {
           this.guardarStorage(usuarioDB._id,this.token,usuarioDB)
         }
 
-        Swal.fire('Usuario actualziado',usuario.nombre.toString(),'success')
+        Swal.fire('Usuario actualizado',usuario.nombre.toString(),'success')
         return true;
       })
     )

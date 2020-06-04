@@ -45,16 +45,18 @@ export class ModalUploadComponent implements OnInit {
 
   async subirImagen(){
     try {
-      let res = await this._subirArchivoService
+      let res:any = await this._subirArchivoService
                           .subirArchivo(
                             this.imagenSubida, 
                             this._modalUploadService.tipo, 
                             this._modalUploadService.id
                             );
-      this._modalUploadService.notificacion.emit(res);
+                            console.log(res);
+      this._modalUploadService.notificacion.emit(res.usuario);
       this.cerrarModal();
-
     } catch (error) {
+      console.log(error);
+      this.cerrarModal();
       Swal.fire('Error al subir archivo','','error');
     }
   }
@@ -63,6 +65,9 @@ export class ModalUploadComponent implements OnInit {
     this.imagenSubida = null;
     this.imagenTemp = null;
     this._modalUploadService.ocultarModal();
+
+    let element : any = document.getElementById('input-upload');
+    element.value = null;
   }
 
 }

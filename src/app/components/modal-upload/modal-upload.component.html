@@ -14,7 +14,7 @@
                     <img *ngIf="!imagenTemp" [src]="'xxx' | imagen" alt="" class="w150">
 
                     <br>
-                    <input (change)="seleccionImagen($event)" type="file" class="">
+                    <input id="input-upload" (change)="seleccionImagen($event)" type="file" class="">
 
                 </div>
                 <div class="modal-footer">

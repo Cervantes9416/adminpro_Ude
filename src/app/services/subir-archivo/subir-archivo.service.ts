@@ -36,8 +36,6 @@ export class SubirArchivoService {
       xhr.open('PUT',URL,true);
       xhr.send(formData);
 
-
-
     });//PROMESA()
   }//subirArchivo()
 

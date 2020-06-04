@@ -1,0 +1,81 @@
+<!-- ============================================================== -->
+<!-- BUSQUEDA DE USUARIOS -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input #input (keyup)="buscarHospital(input.value)" type="text" class="form-control" placeholder="Buscar hospitales"/>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- CARGANDO -->
+<!-- ============================================================== -->
+<div *ngIf="cargando" class="row animated fadeInUp">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando datos..</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere porfavor</span>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================================== -->
+<!-- LISTADO DE HOSPITALES -->
+<!-- ============================================================== -->
+<div class="row">
+
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="col-lg-12" align="right">
+                    <button (click)="crearHospital()" class="btn btn-info">
+                        Crear Hospital
+                    </button>
+                </div>
+
+                <h3 class="card-title">Hospitales registrados (<span>10</span>)</h3>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Hospital</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of hospitales">
+                            <td>
+                                <img (click)="mostrarModal(item._id)" [src]="item.img | imagen : 'hospitales'" class="img-circle img-50 img-border pointer" >
+                            </td>
+                            <td>
+                                <input class="form-control" type="text" [(ngModel)]="item.nombre" name="" id="">
+                            </td>
+                            <td>
+                                <button (click)="actualizarHospital(item)" class="btn btn-primary">
+                                    <i class="fa fa-save"></i>
+                                </button>
+                                <button (click)="borrarHospital(item._id)" class="ml-1 btn btn-danger">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
