@@ -30,6 +30,32 @@ export class UsuarioService {
   }
   
   // ====================================================
+  // RENUEVA TOKEN
+  // ====================================================
+  renuevaToken(){
+    let URL = `${URL_SERVICIOS}/login/renuevatoken`;
+    const headersData = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'token': this.token,
+    });
+
+    return this.http.get(URL,{headers:headersData})
+      .pipe(
+        map((resp:any) => {
+          this.token = resp.token;
+          localStorage.setItem('TOKEN', this.token);
+          console.log('TOKEN RENOVADO');
+          return true;
+        }),
+        catchError((err:any) => {
+          Swal.fire('No se pudo renovar Token','No fue posible renovar token')
+          this.logout();
+          return Observable.throw(err);
+        })
+      )
+  }
+
+  // ====================================================
   // VALIDAR SI EL USUARIO ESTA LOGUEADO
   // ====================================================
   estaLogueado(){
